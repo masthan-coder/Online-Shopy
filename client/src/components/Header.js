@@ -6,6 +6,8 @@ const Header = () => {
 		<header>
 			<Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
 				<Container>
+					{/* Link Container for react-bootstrap links, with this page will not refresh */}
+					{/* Navbar.Brand href="/">OnlineShop</Navbar.Brand> */}
 					<LinkContainer to='/'>
 						<Navbar.Brand>OnlineShop</Navbar.Brand>
 					</LinkContainer>
