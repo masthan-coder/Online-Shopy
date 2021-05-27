@@ -14,13 +14,13 @@ const ProductScreen = ({ match }) => {
 			</Link>
 
 			<Row>
-				<Col md={6}>
+				<Col md={5}>
 					<Image src={product.image} alt={product.name} fluid />
 				</Col>
-				<Col md={3}>
+				<Col md={4}>
 					<ListGroup variant='flush'>
 						<ListGroup.Item>
-							<h3>{product.name}</h3>
+							<h2>{product.name}</h2>
 						</ListGroup.Item>
 						<ListGroup.Item>
 							<Rating
