@@ -1,0 +1,25 @@
+{
+  "name": "online-shopy",
+  "version": "1.0.0",
+  "description": "MERN Ecomerce with the products",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "scripts": {
+    "start": "nodemon backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khaleel-lab/mern-ecommerce.git"
+  },
+  "author": "Khaleel Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khaleel-lab/mern-ecommerce/issues"
+  },
+  "homepage": "https://github.com/khaleel-lab/mern-ecommerce#readme"
+}
