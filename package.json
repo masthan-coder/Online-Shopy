@@ -4,13 +4,20 @@
   "description": "MERN Ecomerce with the products",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "colors": "^1.4.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.3"
   },
   "devDependencies": {
+    "concurrently": "^6.2.0",
     "nodemon": "^2.0.12"
   },
   "scripts": {
-    "start": "nodemon backend/server"
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server \" \"npm run client \""
   },
   "repository": {
     "type": "git",
