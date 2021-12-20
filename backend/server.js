@@ -1,8 +1,13 @@
-const express = require('express');
-const colors = require('colors');
-const connectDB = require('./utils/db');
-const products = require('./data/products');
-require('dotenv').config();
+// ES Module in node
+
+import express from 'express';
+import colors from 'colors';
+import dotenv from 'dotenv';
+
+import connectDB from './config/db.js';
+import products from './data/products.js';
+
+dotenv.config();
 
 const app = express();
 
