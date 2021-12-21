@@ -16,15 +16,16 @@ import Rating from '../components/Rating';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 
-const ProductScreen = ({ match }) => {
+const ProductScreen = ({ match, history }) => {
 	const dispatch = useDispatch();
-	const history = useHistory();
+	// We can also use the history Hook
+	// const history = useHistory();
 
 	const { product, loading, error } = useSelector(
 		(state) => state.productDetails
 	);
 
-	const [qty, setQty] = useState(0);
+	const [qty, setQty] = useState(1);
 
 	useEffect(() => {
 		dispatch(listProductDetails(match.params.id));
