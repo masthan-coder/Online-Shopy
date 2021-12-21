@@ -33,6 +33,7 @@ const ProductScreen = ({ match }) => {
 	const addToCartHandler = () => {
 		history.push(`/cart/${match.params.id}?qty=${qty}`);
 	};
+
 	return (
 		<>
 			<Link to='/' className='btn btn-light my-3'>
