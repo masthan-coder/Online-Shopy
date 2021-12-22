@@ -1,6 +1,13 @@
 * {
 	margin: 0;
 	box-sizing: border-box;
+	outline: none;
+}
+
+.btn:focus,
+.button:focus,
+[type='submit']:focus {
+	outline: none;
 }
 
 main {

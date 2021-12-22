@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useHistory, useLocation, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import {
 	Row,
 	Col,
@@ -12,13 +12,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import Message from '../components/Message';
 import { addToCart, removeFromCart } from '../actions/cartActions';
-
-// A custom hook that builds on useLocation to parse
-// the query string for you.
-function useQuery() {
-	const { search } = useLocation();
-	return React.useMemo(() => new URLSearchParams(search), [search]);
-}
+import { useQuery } from '../hooks/useQuery';
 
 const CartScreen = ({ match, location, history }) => {
 	const dispatch = useDispatch();
