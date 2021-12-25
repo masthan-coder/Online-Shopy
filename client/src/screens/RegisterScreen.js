@@ -89,16 +89,15 @@ function RegisterScreen() {
 				<Button className='my-3' type='submit' variant='primary'>
 					Register
 				</Button>
-
-				<Row className='my-3'>
-					<Col>
-						Have an Account?{' '}
-						<Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-							Login
-						</Link>
-					</Col>
-				</Row>
 			</Form>
+			<Row className='my-3'>
+				<Col>
+					Have an Account?{' '}
+					<Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
+						Login
+					</Link>
+				</Col>
+			</Row>
 		</FormContainer>
 	);
 }

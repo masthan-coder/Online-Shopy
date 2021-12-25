@@ -61,18 +61,15 @@ function LoginScreen() {
 				<Button className='my-2' type='submit' variant='primary'>
 					Sign In
 				</Button>
-
-				<Row className='my-3'>
-					<Col>
-						New Customer?{' '}
-						<Link
-							to={redirect ? `/register?redirect=${redirect}` : '/register'}
-						>
-							Register
-						</Link>
-					</Col>
-				</Row>
 			</Form>
+			<Row className='my-3'>
+				<Col>
+					New Customer?{' '}
+					<Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>
+						Register
+					</Link>
+				</Col>
+			</Row>
 		</FormContainer>
 	);
 }
