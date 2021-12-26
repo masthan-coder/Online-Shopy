@@ -27,6 +27,7 @@ const CartScreen = ({ match, location, history }) => {
 	const qty = location.search ? Number(location.search.split('=')[1]) : 1;
 
 	const { cartItems } = useSelector((state) => state.cart);
+	const { userInfo } = useSelector((state) => state.userLogin);
 
 	useEffect(() => {
 		if (productId) {
@@ -52,7 +53,11 @@ const CartScreen = ({ match, location, history }) => {
 
 	const checkoutHandler = () => {
 		// history.push('/login?redirect=shipping')
-		history.push('/shipping');
+		if (!userInfo || !userInfo._id) {
+			history.push('/login');
+		} else {
+			history.push('/shipping');
+		}
 	};
 
 	return (
