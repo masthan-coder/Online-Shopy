@@ -1,14 +1,19 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
+import { createOrder } from '../actions/orderActions';
 
 const PlaceOrderScreen = () => {
+	const dispatch = useDispatch();
+	const history = useHistory();
 	const cart = useSelector((state) => state.cart);
 	const { cartItems, shippingAddress, paymentMethod } = cart;
+
+	const { order, success, error } = useSelector((state) => state.orderCreate);
 
 	//   Calculate prices
 	const addDecimals = (num) => {
@@ -16,7 +21,7 @@ const PlaceOrderScreen = () => {
 	};
 
 	cart.itemsPrice = addDecimals(
-		cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+		cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
 	);
 	cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100);
 	cart.taxPrice = addDecimals(Number((0.05 * cart.itemsPrice).toFixed(2)));
@@ -27,8 +32,25 @@ const PlaceOrderScreen = () => {
 		Number(cart.taxPrice)
 	).toFixed(2);
 
+	useEffect(() => {
+		if (success) {
+			history.push(`/order/${order._id}`);
+		}
+		// eslint-disable-next-line
+	}, [history, success]);
+
 	const placeOrderHandler = () => {
-		console.log('Order');
+		dispatch(
+			createOrder({
+				orderItems: cartItems,
+				shippingAddress: shippingAddress,
+				paymentMethod: paymentMethod,
+				itemsPrice: cart.itemsPrice,
+				shippingPrice: cart.shippingPrice,
+				taxPrice: cart.taxPrice,
+				totalPrice: cart.totalPrice,
+			})
+		);
 	};
 	return (
 		<>
@@ -112,6 +134,9 @@ const PlaceOrderScreen = () => {
 									<Col>Total</Col>
 									<Col>₹{cart.totalPrice}</Col>
 								</Row>
+							</ListGroup.Item>
+							<ListGroup.Item>
+								{error && <Message variant='danger'>{error}</Message>}
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Button
