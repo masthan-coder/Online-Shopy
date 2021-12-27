@@ -4,6 +4,10 @@
 	outline: none;
 }
 
+strong {
+	font-weight: 600 !important;
+}
+
 .btn:focus,
 .button:focus,
 [type='submit']:focus {
