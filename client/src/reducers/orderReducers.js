@@ -12,6 +12,7 @@ import {
 	ORDERED_LIST_REQUEST,
 	ORDERED_LIST_SUCCESS,
 	ORDERED_LIST_FAIL,
+	ORDERED_LIST_RESET,
 } from '../constants/orderConstants';
 
 export const orderCreateReducer = (state = {}, action) => {
@@ -66,6 +67,8 @@ export const orderedListReducer = (state = { orders: [] }, action) => {
 			return { loading: false, orders: action.payload };
 		case ORDERED_LIST_FAIL:
 			return { loading: false, error: action.payload };
+		case ORDERED_LIST_RESET:
+			return { orders: [] };
 
 		default:
 			return state;
