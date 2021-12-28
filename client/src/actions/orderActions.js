@@ -1,5 +1,8 @@
 import axios from 'axios';
 import {
+	ORDERED_LIST_FAIL,
+	ORDERED_LIST_REQUEST,
+	ORDERED_LIST_SUCCESS,
 	ORDER_CREATE_FAIL,
 	ORDER_CREATE_REQUEST,
 	ORDER_CREATE_SUCCESS,
@@ -113,3 +116,35 @@ export const payOrder =
 			});
 		}
 	};
+
+export const listOrders = () => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: ORDERED_LIST_REQUEST,
+		});
+
+		const {
+			userLogin: { userInfo },
+		} = getState();
+
+		const config = {
+			headers: {
+				Authorization: `Bearer ${userInfo.token}`,
+			},
+		};
+		const { data } = await axios.get(`/api/orders/myorders`, config);
+
+		dispatch({
+			type: ORDERED_LIST_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		dispatch({
+			type: ORDERED_LIST_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message,
+		});
+	}
+};
