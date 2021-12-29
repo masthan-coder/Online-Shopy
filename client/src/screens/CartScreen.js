@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
 	Row,
 	Col,
@@ -12,7 +12,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import Message from '../components/Message';
 import { addToCart, removeFromCart } from '../actions/cartActions';
-import { useQuery } from '../hooks/useQuery';
+// import { useQuery } from '../hooks/useQuery';
 
 const CartScreen = ({ match, location, history }) => {
 	const dispatch = useDispatch();

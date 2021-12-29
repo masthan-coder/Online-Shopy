@@ -33,22 +33,6 @@ const responsive = {
 	},
 };
 
-const CustomRightArrow = ({ onClick, ...rest }) => {
-	const {
-		onMove,
-		carouselState: { currentSlide, deviceType },
-	} = rest;
-	// onMove means if dragging or swiping in progress.
-	return <button onClick={() => onClick()} />;
-};
-const customLeftArrow = ({ onClick, ...rest }) => {
-	const {
-		onMove,
-		carouselState: { currentSlide, deviceType },
-	} = rest;
-	// onMove means if dragging or swiping in progress.
-	return <button onClick={() => onClick()} />;
-};
 function BannerCard() {
 	const classes = useStyles();
 
@@ -60,8 +44,6 @@ function BannerCard() {
 				autoPlay
 				autoPlaySpeed={3000}
 				infinite
-				// customLeftArrow={<customLeftArrow />}
-				// customRightArrow={<CustomRightArrow />}
 			>
 				{data.length > 0 &&
 					data.map((item, i) => (
