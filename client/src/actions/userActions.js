@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ORDERED_LIST_RESET } from '../constants/orderConstants';
+import { ORDER_USER_LIST_RESET } from '../constants/orderConstants';
 import {
 	USER_DELETE_FAIL,
 	USER_DELETE_REQUEST,
@@ -68,7 +68,7 @@ export const logout = () => async (dispatch) => {
 		type: USER_DETAILS_RESET,
 	});
 	dispatch({
-		type: ORDERED_LIST_RESET,
+		type: ORDER_USER_LIST_RESET,
 	});
 	dispatch({
 		type: USER_LIST_RESET,

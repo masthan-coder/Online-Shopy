@@ -7,7 +7,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
-import { listOrders } from '../actions/orderActions';
+import { listUserOrders } from '../actions/orderActions';
 
 function ProfileScreen() {
 	const history = useHistory();
@@ -20,7 +20,7 @@ function ProfileScreen() {
 		loading: loadingListOrder,
 		error: errorListOrder,
 		orders,
-	} = useSelector((state) => state.orderedList);
+	} = useSelector((state) => state.orderUserList);
 
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
@@ -38,7 +38,7 @@ function ProfileScreen() {
 					type: USER_UPDATE_PROFILE_RESET,
 				});
 				dispatch(getUserDetails('profile'));
-				dispatch(listOrders());
+				dispatch(listUserOrders());
 			} else {
 				setName(user.name);
 				setEmail(user.email);
