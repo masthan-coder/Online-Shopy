@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
-import { listProductDetails } from '../actions/productActions';
+import { listProductDetails, updateProduct } from '../actions/productActions';
+import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
 
 function ProductEditScreen() {
 	const dispatch = useDispatch();
@@ -15,6 +16,11 @@ function ProductEditScreen() {
 	const { loading, error, product } = useSelector(
 		(state) => state.productDetails
 	);
+	const {
+		loading: loadingUpdate,
+		error: errorUpdate,
+		success: successUpdate,
+	} = useSelector((state) => state.productUpdate);
 
 	const [name, setName] = useState('');
 	const [price, setPrice] = useState(0);
@@ -25,22 +31,38 @@ function ProductEditScreen() {
 	const [description, setDescription] = useState('');
 
 	useEffect(() => {
-		if (!product.name || product._id !== productId) {
-			dispatch(listProductDetails(productId));
+		if (successUpdate) {
+			dispatch({ type: PRODUCT_UPDATE_RESET });
+			history.push('/admin/productlist');
 		} else {
-			setName(product.name);
-			setPrice(product.price);
-			setImage(product.image);
-			setBrand(product.brand);
-			setCategory(product.category);
-			setCountInStock(product.countInStock);
-			setDescription(product.description);
+			if (!product.name || product._id !== productId) {
+				dispatch(listProductDetails(productId));
+			} else {
+				setName(product.name);
+				setPrice(product.price);
+				setImage(product.image);
+				setBrand(product.brand);
+				setCategory(product.category);
+				setCountInStock(product.countInStock);
+				setDescription(product.description);
+			}
 		}
-	}, [dispatch, history, product, productId]);
+	}, [dispatch, history, product, productId, successUpdate]);
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		// Update
+		dispatch(
+			updateProduct({
+				_id: productId,
+				name,
+				price,
+				image,
+				brand,
+				category,
+				description,
+				countInStock,
+			})
+		);
 	};
 
 	return (
@@ -50,6 +72,8 @@ function ProductEditScreen() {
 			</Link>
 			<FormContainer>
 				<h1>Edit Product</h1>
+				{loadingUpdate && <Loader />}
+				{errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
 				{loading ? (
 					<Loader />
 				) : error ? (
