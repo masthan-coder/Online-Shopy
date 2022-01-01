@@ -1,9 +1,12 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../actions/userActions';
 import { useHistory } from 'react-router-dom';
+import SearchBox from './SearchBox';
+
 const Header = () => {
 	const dispatch = useDispatch();
 	const history = useHistory();
@@ -20,13 +23,16 @@ const Header = () => {
 		<header>
 			<Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
 				<Container>
-					{/* Link Container for react-bootstrap links, with this page will not refresh */}
 					{/* Navbar.Brand href="/">OnlineShop</Navbar.Brand> */}
+					{/* LinkContainer for react-bootstrap links, with this page will not refresh */}
 					<LinkContainer to='/'>
 						<Navbar.Brand>OnlineShop</Navbar.Brand>
 					</LinkContainer>
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
 					<Navbar.Collapse id='basic-navbar-nav'>
+						{/* Search Component */}
+						<Route render={({ history }) => <SearchBox history={history} />} />
+
 						<Nav className='ms-auto'>
 							<LinkContainer to='/cart'>
 								<Nav.Link>
