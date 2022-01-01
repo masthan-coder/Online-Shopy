@@ -59,7 +59,7 @@ export const login = (email, password) => async (dispatch) => {
 	}
 };
 
-export const logout = () => async (dispatch) => {
+export const logout = (redirectRoute) => async (dispatch) => {
 	localStorage.removeItem('userInfo');
 	dispatch({
 		type: USER_LOGOUT,
@@ -73,6 +73,7 @@ export const logout = () => async (dispatch) => {
 	dispatch({
 		type: USER_LIST_RESET,
 	});
+	redirectRoute();
 };
 
 export const register = (name, email, password) => async (dispatch) => {
