@@ -27,10 +27,6 @@ if (process.env.NODE_ENV === 'development') {
 // allow us to accept the json data in the body
 app.use(express.json());
 
-app.get('/', (req, res) => {
-	res.send('API is Running');
-});
-
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
@@ -44,6 +40,20 @@ app.get('/api/config/paypal', (req, res) =>
 // making a folder static - to load in the browser
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+
+if (process.env.NODE_ENV === 'production') {
+	// making build folder to static
+	app.use(express.static(path.join(__dirname, '/client/build')));
+
+	// when we hit the any routes then we load a index.html in the browser
+	app.get('*', (req, res) =>
+		res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+	);
+} else {
+	app.get('/', (req, res) => {
+		res.send('API is Running');
+	});
+}
 
 // Middlewares for errorHandlers and notFound Route
 app.use(notFound);
