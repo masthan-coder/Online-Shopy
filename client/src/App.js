@@ -24,7 +24,7 @@ function App() {
 	return (
 		<Router>
 			<Header />
-			<Route path='/' component={BannerCard} exact />
+			{/* <Route path='/' component={BannerCard} exact /> */}
 			<main className='py-3'>
 				<Container>
 					<Route path='/shipping' component={ShippingScreen} />
