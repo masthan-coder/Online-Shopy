@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import HomeScreen from './screens/HomeScreen';
 import ProductScreen from './screens/ProductScreen';
-import BannerCard from './components/Hero/BannerCard';
+// import BannerCard from './components/Hero/BannerCard';
 import CartScreen from './screens/CartScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';

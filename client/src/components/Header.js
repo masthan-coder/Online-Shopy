@@ -26,7 +26,7 @@ const Header = () => {
 					{/* Navbar.Brand href="/">OnlineShop</Navbar.Brand> */}
 					{/* LinkContainer for react-bootstrap links, with this page will not refresh */}
 					<LinkContainer to='/'>
-						<Navbar.Brand>OnlineShop</Navbar.Brand>
+						<Navbar.Brand>OnlineShopy</Navbar.Brand>
 					</LinkContainer>
 					<Navbar.Toggle aria-controls='basic-navbar-nav' />
 					<Navbar.Collapse id='basic-navbar-nav'>

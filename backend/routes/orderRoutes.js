@@ -10,6 +10,11 @@ import {
 } from '../controllers/orderController.js';
 import { protect, admin } from '../middleware/authMiddleware.js';
 
+// Pending order routes not documented in POSTMAN
+// - addOrderItems
+// - updateOrderToPaid
+// - updateOrderToDelivered
+
 router
 	.route('/')
 	.post(protect, addOrderItems)

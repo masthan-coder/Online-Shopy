@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
-import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 import { listUserOrders } from '../actions/orderActions';
+import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 
 function ProfileScreen() {
 	const history = useHistory();

@@ -251,7 +251,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
 	}
 };
 
-// Admin acn update
+// Admin can update
 export const updateUser = (user) => async (dispatch, getState) => {
 	try {
 		dispatch({

@@ -10,7 +10,6 @@ import {
 	Form,
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-
 import {
 	listProductDetails,
 	createProductReview,
@@ -18,8 +17,8 @@ import {
 import Rating from '../components/Rating';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
-import { PRODUCT_REVIEW_CREATE_RESET } from '../constants/productConstants';
 import Meta from '../components/Meta';
+import { PRODUCT_REVIEW_CREATE_RESET } from '../constants/productConstants';
 
 const ProductScreen = () => {
 	const dispatch = useDispatch();
